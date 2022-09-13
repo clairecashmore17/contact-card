@@ -9,7 +9,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../css/index.css";
 
 //importing db
-import { initdb, getDb, postDb } from "./database";
+import { initdb, getDb, postDb, deleteDb } from "./database";
 // card import
 import { fetchCards } from "./cards";
 //form import
@@ -61,3 +61,12 @@ form.addEventListener("submit", (event) => {
   // Reload the DOM
   fetchCards();
 });
+
+window.deleteCard = (e) => {
+  //Grabs the id from the button element attache to the contact card
+  let id = parseInt(e.id);
+  //Delete the card
+  deleteDb(id);
+  // reload teh DOM
+  fetchCards();
+};
