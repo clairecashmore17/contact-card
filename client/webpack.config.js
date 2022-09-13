@@ -1,5 +1,6 @@
 const path = require("path");
-
+//importing our html-webapck plugin
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   // sets our starting file to this as our dependency graph
   entry: "./src/js/index.js",
@@ -9,6 +10,13 @@ module.exports = {
     //path sets our directory where the bundled files will be outputted, which we call and send to dist
     path: path.resolve(__dirname, "dist"),
   },
+  plugins: [
+    //must create new instance of html plugin and add template and title property
+    new HtmlWebpackPlugin({
+      template: "./index.html",
+      title: "Webpack Plugin",
+    }),
+  ],
   module: {
     rules: [
       {
