@@ -1,6 +1,9 @@
 const path = require("path");
 //importing our html-webapck plugin
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const WorkboxPlugin = require("workbox-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
   // sets our starting file to this as our dependency graph
   entry: "./src/js/index.js",
@@ -16,6 +19,7 @@ module.exports = {
       template: "./index.html",
       title: "Webpack Plugin",
     }),
+    new WorkboxPlugin.GenerateSW(),
   ],
   module: {
     rules: [
