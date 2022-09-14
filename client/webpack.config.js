@@ -1,8 +1,9 @@
 const path = require("path");
 //importing our html-webapck plugin
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const WorkboxPlugin = require("workbox-webpack-plugin");
+const { InjectManifest } = require("workbox-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { injectManifest } = require("workbox-build");
 
 module.exports = {
   // sets our starting file to this as our dependency graph
@@ -19,7 +20,11 @@ module.exports = {
       template: "./index.html",
       title: "Webpack Plugin",
     }),
-    new WorkboxPlugin.GenerateSW(),
+    //using injectManifest instead of GenerateSW
+    new InjectManifest({
+      swSrc: "./src/sw.js",
+      swDest: "service-worker.js",
+    }),
   ],
   module: {
     rules: [
