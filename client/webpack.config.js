@@ -7,6 +7,7 @@ const { injectManifest } = require("workbox-build");
 const WebpackPwaManifest = require("webpack-pwa-manifest");
 
 module.exports = {
+  mode: "production",
   // sets our starting file to this as our dependency graph
   entry: "./src/js/index.js",
   //output is where the budled files will be generated, we set it to bundle.js
